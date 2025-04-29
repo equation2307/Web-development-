@@ -28,7 +28,9 @@ cd Web-development-
 
 2. Install backend dependencies:
 ```bash
+cd backend
 npm install
+cd ..
 ```
 
 3. Install frontend dependencies:
@@ -45,6 +47,7 @@ Note: We use `--legacy-peer-deps` flag because there's a dependency conflict bet
 1. Start the backend server:
 ```bash
 # From the root directory
+cd backend
 npm start
 ```
 The server will run at http://localhost:3000
@@ -102,15 +105,17 @@ kill -9 <PID>
 ## Project Structure
 ```
 Web-development-/
-├── server.js           # Backend server
-├── recipes.js          # Recipe data
-├── frontend-react/     # React frontend
+├── backend/            # Backend server
+│   ├── server.js      # Express server
+│   ├── recipes.js     # Recipe data
+│   └── package.json   # Backend dependencies
+├── frontend-react/    # React frontend
 │   ├── src/
 │   │   ├── components/ # React components
 │   │   ├── pages/      # Page components
 │   │   └── App.js      # Main App component
 │   └── package.json    # Frontend dependencies
-└── package.json        # Backend dependencies
+└── README.md          # Project documentation
 ```
 
 ## Contributing

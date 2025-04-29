@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'frontend-react/build')));
+app.use(express.static(path.join(__dirname, '../frontend-react/build')));
 
 // Logging middleware
 app.use((req, res, next) => {
@@ -73,7 +73,7 @@ app.use((err, req, res, next) => {
 
 // Catch-all route to serve the React app
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'frontend-react/build', 'index.html'));
+    res.sendFile(path.join(__dirname, '../frontend-react/build', 'index.html'));
 });
 
 // Handle process termination
