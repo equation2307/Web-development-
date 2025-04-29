@@ -57,6 +57,23 @@ npm start
 ```
 The frontend will run at http://localhost:3001
 
+## API Endpoints
+
+1. Get all recipes:
+```
+GET /api/recipes
+```
+
+2. Search recipes:
+```
+GET /api/recipes/search?q=<search_term>
+```
+
+3. Get a single recipe:
+```
+GET /api/recipes/:id
+```
+
 ## Troubleshooting
 
 If you encounter any issues:
@@ -100,4 +117,4 @@ Web-development-/
 Feel free to submit issues and enhancement requests!
 
 ## License
-This project is licensed under the MIT License. 
+This project is licensed under the MIT License.
