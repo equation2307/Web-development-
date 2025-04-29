@@ -13,43 +13,78 @@ A full-stack web application for managing and searching recipes.
 - Backend: Node.js with Express
 - Data Storage: In-memory JavaScript objects
 
+## Prerequisites
+- Node.js (v18.16.0 or higher)
+- npm (Node Package Manager)
+- Git
+
 ## Setup Instructions
 
 1. Clone the repository:
 ```bash
-git clone <your-repository-url>
-cd meal-master
+git clone https://github.com/equation2307/Web-development-.git
+cd Web-development-
 ```
 
-2. Install dependencies:
+2. Install backend dependencies:
 ```bash
-# Install backend dependencies
 npm install
+```
 
-# Install frontend dependencies
+3. Install frontend dependencies:
+```bash
 cd frontend-react
-npm install
+npm install --legacy-peer-deps
 cd ..
 ```
 
-3. Start the development server:
-```bash
-# Start backend server
-npm start
+Note: We use `--legacy-peer-deps` flag because there's a dependency conflict between React 18 and Material-UI v4. This flag allows the installation to proceed despite the conflict.
 
-# In a new terminal, start frontend
+## Running the Project
+
+1. Start the backend server:
+```bash
+# From the root directory
+npm start
+```
+The server will run at http://localhost:3000
+
+2. Start the frontend development server:
+```bash
+# Open a new terminal
 cd frontend-react
 npm start
 ```
+The frontend will run at http://localhost:3001
 
-4. Open your browser and navigate to:
+## Troubleshooting
+
+If you encounter any issues:
+
+1. Server being killed:
+```bash
+# Try running with increased memory limit
+node --max-old-space-size=4096 server.js
 ```
-http://localhost:3000
+
+2. Dependency conflicts:
+```bash
+# Clear npm cache and reinstall
+npm cache clean --force
+rm -rf node_modules
+npm install
+```
+
+3. Port already in use:
+```bash
+# Find and kill the process using port 3000
+lsof -i :3000
+kill -9 <PID>
 ```
 
 ## Project Structure
 ```
-meal-master/
+Web-development-/
 ├── server.js           # Backend server
 ├── recipes.js          # Recipe data
 ├── frontend-react/     # React frontend
@@ -62,4 +97,7 @@ meal-master/
 ```
 
 ## Contributing
-Feel free to submit issues and enhancement requests! 
+Feel free to submit issues and enhancement requests!
+
+## License
+This project is licensed under the MIT License. 
