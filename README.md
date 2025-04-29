@@ -60,6 +60,3 @@ meal-master/
 │   └── package.json    # Frontend dependencies
 └── package.json        # Backend dependencies
 ```
-
-## Contributing
-Feel free to submit issues and enhancement requests! 
