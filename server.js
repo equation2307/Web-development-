@@ -41,10 +41,34 @@ app.get('/api/recipes/search', (req, res) => {
     }
 });
 
+// API endpoint to get all recipes
+app.get('/api/recipes', (req, res) => {
+    try {
+        res.json(recipes);
+    } catch (error) {
+        console.error('Error getting recipes:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+// API endpoint to get a single recipe by ID
+app.get('/api/recipes/:id', (req, res) => {
+    try {
+        const recipe = recipes.find(r => r.id === req.params.id);
+        if (!recipe) {
+            return res.status(404).json({ error: 'Recipe not found' });
+        }
+        res.json(recipe);
+    } catch (error) {
+        console.error('Error getting recipe:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).send('Something broke!');
+    res.status(500).json({ error: 'Something went wrong!' });
 });
 
 // Catch-all route to serve the React app
