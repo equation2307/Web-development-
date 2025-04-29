@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "express": "^4.21.2",
+    "path": "^0.12.7",
+    "path-to-regexp": "^8.2.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "untitled-folder-2",
+  "version": "1.0.0",
+  "main": "server.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
