@@ -38,7 +38,8 @@ function Home() {
             Welcome to MealMaster
           </Typography>
           <Typography variant="body1">
-            Plan your meals, discover recipes, and organize your shopping list all in one place.
+            Did you know? The average person spends about 6 months of their lifetime waiting for food to cook! 
+            Let's make that time count with delicious recipes and smart meal planning.
           </Typography>
         </Box>
       </Container>
