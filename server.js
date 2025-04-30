@@ -1,40 +1,38 @@
-// yo, we need these things to make stuff work
 const express = require('express');
 const path = require('path');
 const recipes = require('./recipes');
 const cors = require('cors');
 
-// give it more juice to handle stuff
+// Increase memory limit
 process.setMaxListeners(0);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// let the frontend talk to us, its cool
+// CORS configuration
 app.use(cors({
   origin: 'http://localhost:3001',
+  credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
-  credentials: true
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// basic stuff we need
+// Middleware
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../frontend-react/build')));
+app.use(express.static(path.join(__dirname, 'frontend-react/build')));
 
-// lets see what people are doing
+// Logging middleware
 app.use((req, res, next) => {
     console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
     next();
 });
 
-// when someone wants to find a recipe
+// API endpoint for recipe search
 app.get('/api/recipes/search', (req, res) => {
     try {
         const query = req.query.q?.toLowerCase() || '';
         console.log('Search query:', query);
 
-        // look through all recipes and find the good ones
         const foundRecipes = recipes.filter(recipe => {
             const searchInName = recipe.name.toLowerCase().includes(query);
             const searchInType = recipe.type.toLowerCase().includes(query);
@@ -47,22 +45,22 @@ app.get('/api/recipes/search', (req, res) => {
         console.log(`Found ${foundRecipes.length} recipes matching "${query}"`);
         res.json(foundRecipes);
     } catch (error) {
-        console.error('oops, something went wrong:', error);
+        console.error('Error searching recipes:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
 
-// get all the recipes, no filter
+// API endpoint to get all recipes
 app.get('/api/recipes', (req, res) => {
     try {
         res.json(recipes);
     } catch (error) {
-        console.error('uh oh, error getting recipes:', error);
+        console.error('Error getting recipes:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
 
-// get just one recipe by its id
+// API endpoint to get a single recipe by ID
 app.get('/api/recipes/:id', (req, res) => {
     try {
         const recipe = recipes.find(r => r.id === req.params.id);
@@ -71,28 +69,28 @@ app.get('/api/recipes/:id', (req, res) => {
         }
         res.json(recipe);
     } catch (error) {
-        console.error('error getting recipe:', error);
+        console.error('Error getting recipe:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
 
-// if something goes wrong, handle it nicely
+// Error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({ error: 'Something went wrong!' });
 });
 
-// if they hit any other route, give them the react app
+// Catch-all route to serve the React app
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend-react/build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'frontend-react/build', 'index.html'));
 });
 
-// start the server and tell everyone its ready
+// Start server
 const server = app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
 
-// handle when someone tries to shut us down nicely
+// Handle process termination
 process.on('SIGTERM', () => {
     console.log('SIGTERM received. Shutting down gracefully...');
     server.close(() => {
@@ -107,7 +105,7 @@ process.on('SIGINT', () => {
     });
 });
 
-// catch any random errors that might happen
+// Handle uncaught exceptions
 process.on('uncaughtException', (err) => {
     console.error('Uncaught Exception:', err);
     server.close(() => {
@@ -115,7 +113,7 @@ process.on('uncaughtException', (err) => {
     });
 });
 
-// catch any promises that fail
+// Handle unhandled promise rejections
 process.on('unhandledRejection', (reason, promise) => {
     console.error('Unhandled Rejection at:', promise, 'reason:', reason);
     server.close(() => {

@@ -22,15 +22,6 @@ function Navbar() {
           <Button color="inherit" component={RouterLink} to="/meal-plan">
             Meal Plan
           </Button>
-          <Button color="inherit" component={RouterLink} to="/shopping-list">
-            Shopping List
-          </Button>
-          <Button color="inherit" component={RouterLink} to="/login">
-            Login
-          </Button>
-          <Button color="inherit" component={RouterLink} to="/register">
-            Register
-          </Button>
         </Box>
       </Toolbar>
     </AppBar>

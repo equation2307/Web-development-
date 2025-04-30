@@ -8,9 +8,6 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Recipes from './pages/Recipes';
 import MealPlan from './pages/MealPlan';
-import ShoppingList from './pages/ShoppingList';
-import Login from './pages/Login';
-import Register from './pages/Register';
 
 const theme = createTheme({
   palette: {
@@ -33,9 +30,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/meal-plan" element={<MealPlan />} />
-          <Route path="/shopping-list" element={<ShoppingList />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
         </Routes>
       </div>
     </ThemeProvider>

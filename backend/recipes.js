@@ -1,5 +1,6 @@
+// here's all our yummy recipes
 const recipes = [
-    // Breakfast Recipes
+    // morning food
     {
         id: 1,
         name: 'Classic Pancakes',
@@ -18,7 +19,7 @@ const recipes = [
         ingredients: ['greek yogurt', 'honey', 'granola', 'mixed berries'],
         instructions: 'Layer yogurt, fruits, and granola in a glass'
     },
-    // Lunch Recipes
+    // lunch stuff
     {
         id: 3,
         name: 'Chicken Caesar Salad',
@@ -37,7 +38,7 @@ const recipes = [
         ingredients: ['tortilla', 'hummus', 'cucumber', 'bell peppers', 'spinach'],
         instructions: 'Spread hummus on tortilla, add vegetables, roll and serve'
     },
-    // Dinner Recipes
+    // dinner time
     {
         id: 5,
         name: 'Spaghetti Bolognese',
@@ -56,7 +57,7 @@ const recipes = [
         ingredients: ['salmon fillets', 'lemon', 'olive oil', 'dill', 'salt'],
         instructions: 'Season salmon, grill until cooked through, serve with lemon'
     },
-    // Snack Recipes
+    // snack attack
     {
         id: 7,
         name: 'Trail Mix',
@@ -74,7 +75,71 @@ const recipes = [
         type: 'snack',
         ingredients: ['banana', 'berries', 'yogurt', 'milk', 'honey'],
         instructions: 'Blend all ingredients until smooth'
+    },
+    // some more fancy stuff
+    {
+        id: '1',
+        name: 'Spaghetti Carbonara',
+        type: 'Italian',
+        cookingTime: '30 minutes',
+        ingredients: [
+            '400g spaghetti',
+            '200g pancetta',
+            '4 large eggs',
+            '100g Pecorino Romano cheese',
+            '100g Parmigiano-Reggiano',
+            'Black pepper',
+            'Salt'
+        ],
+        instructions: [
+            'Cook pasta according to package instructions',
+            'Fry pancetta until crispy',
+            'Mix eggs and cheese',
+            'Combine all ingredients'
+        ]
+    },
+    {
+        id: '2',
+        name: 'Chicken Curry',
+        type: 'Indian',
+        cookingTime: '45 minutes',
+        ingredients: [
+            '500g chicken',
+            '2 onions',
+            '3 tomatoes',
+            'Curry powder',
+            'Garam masala',
+            'Coconut milk',
+            'Oil'
+        ],
+        instructions: [
+            'Brown the chicken',
+            'Sauté onions and spices',
+            'Add tomatoes and coconut milk',
+            'Simmer until chicken is cooked'
+        ]
+    },
+    {
+        id: '3',
+        name: 'Caesar Salad',
+        type: 'American',
+        cookingTime: '15 minutes',
+        ingredients: [
+            'Romaine lettuce',
+            'Croutons',
+            'Parmesan cheese',
+            'Caesar dressing',
+            'Chicken breast',
+            'Anchovies'
+        ],
+        instructions: [
+            'Wash and chop lettuce',
+            'Grill chicken',
+            'Combine all ingredients',
+            'Toss with dressing'
+        ]
     }
 ];
 
+// share the recipes with everyone
 module.exports = recipes; 
