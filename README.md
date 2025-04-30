@@ -9,7 +9,7 @@ A full-stack web application for managing and searching recipes.
 - Modern UI with Material-UI components
 
 ## Tech Stack
-- Frontend: React.js with Material-UI
+- Frontend: React.js
 - Backend: Node.js with Express
 - Data Storage: In-memory JavaScript objects
 
