@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Container,
   Typography,
@@ -19,22 +19,38 @@ function Recipes() {
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    searchRecipes();
-  }, [searchTerm]);
-
-  const searchRecipes = async () => {
+  const searchRecipes = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/recipes/search?q=${encodeURIComponent(searchTerm)}`);
+      const response = await fetch(`http://localhost:3000/api/recipes/search?q=${encodeURIComponent(searchTerm)}`, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Origin': 'http://localhost:3001'
+        },
+        mode: 'cors',
+        credentials: 'include'
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
       const data = await response.json();
+      console.log('Received recipes:', data);
       setRecipes(data);
     } catch (error) {
       console.error('Error searching recipes:', error);
+      // You could add a retry mechanism here if needed
     } finally {
       setLoading(false);
     }
-  };
+  }, [searchTerm]);
+
+  useEffect(() => {
+    searchRecipes();
+  }, [searchRecipes]);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
