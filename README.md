@@ -66,14 +66,9 @@ The application will be available at:
 
 ## Tech Stack
 
-- Frontend: React.js with Material-UI
+- Frontend: React.js 
 - Backend: Node.js with Express
 - Data Storage: In-memory JavaScript objects
 - Development: npm for package management
 
-## Contributing
 
-Feel free to submit issues and enhancement requests!
-
-## License
-This project is licensed under the MIT License.
